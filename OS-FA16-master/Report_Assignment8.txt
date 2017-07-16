@@ -1,0 +1,59 @@
+Assignment-8
+
+Problem -1:
+Implementing chat application in xinu which can communicate with a chat app running in Linux on a port.
+
+running the program in linux
+
+filename: server.c
+It runs on the port 3000
+
+In xinu:
+chats <ipaddress> <port>
+
+
+filenames:
+xsh_chats.c
+server.c
+
+problem -2:
+Adding a new implementation to ARP which clears the cache after every 5 minutes.
+
+files changed:
+
+arp.h
+Add a new field in arpentry called timestamp which stores the timestamp value
+
+arp.c
+add a new function called arp_cache_clear() which checks the arp cache table and
+clears stale entries by checking if the timestamp is greater than 5 minutes.
+every time the entry is resloved, timestamp is updated.
+
+
+
+problem -3: Network Futures
+Futures were already implemented.we tried to use the same implementation.
+The flow is as follows:
+1. chats application in xinu initiates the communication by sending a text.
+2.the server app running in linux sends back the length of the text and we consider
+  it as producer and store its value in the future object
+3. there is future consumer which will consume this value. Ideally chats application
+  itself is a producer here.
+
+  Files changed or added:
+  xsh_chats.c
+  future_netw_cons.c
+  future.h
+
+
+Team members
+hdasika
+jkhandar
+
+
+
+jkhandar:
+Implemented problem one and two
+
+hdasika:
+implemented problem three

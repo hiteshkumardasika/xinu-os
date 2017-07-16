@@ -1,0 +1,55 @@
+This project is about writing a filesystem from scratch.
+This involved designing our own inode structure and different other datastructures which can be observed in fs.h.
+First lesson learnt is about understanding the importance of inode data structure in a filesystem.
+Next lesson learnt is how memory is allocated and how are free data blocks managed;
+
+There are five important function in the filesystem implemented
+create
+write
+read
+open
+close
+
+create:
+
+This function is used to create a file wtih a given name. Creating a file involves,
+changing the filesystem metadata
+creating an inode for this file
+assigning a file descriptor to this file.
+
+write:
+This function takes a file descriptor, a buffer with the data to write and length of the buffer. Writing involves
+getting the inode for this file descriptor
+writing data into each direct blocks pointed by the inode
+updating the fileptr and the size of the file
+
+read:
+This function takes a file descriptor, a buffer to hold the data read and number of bytes to read. Reading involves
+Getting the inode for this file descriptor
+finding out the number of direct blocks which contain the data
+reading the blocks out
+copying the require number of bytes into the output buffer.
+
+open:
+This function takes filename and flags as argument.
+It searches through the directory entries to find the details about this file. If found,flag is set to open and the
+file descriptor is returned.
+
+close:
+this function takse filedescriptor as argunment and sets the flag to close.
+
+
+Team:
+Hitesh Kumar Dasika (hdasika)
+Jayendra Khandare (jkhandar)
+
+Division of work:
+
+hdasika
+create
+write
+close
+
+jkhandar
+open
+read

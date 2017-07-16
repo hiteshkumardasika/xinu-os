@@ -1,0 +1,15 @@
+Synchronization in this case is achieved by using two semaphores.One semaphore is for producer and the other is for
+consumer.Initially produced semaphore is set to 0 and consumed semaphore is set to 1.
+Initially as consumed semaphore is 1, consume executes first by calling wait on consumed seamphore and after completion,
+it sets the produce semaphore to 1 by calling signal and hence the produce executes. Hence,they execute in a synchronous
+manner.
+
+For the main program to end after both producer and consumed, capture the pid of the main program and suspend the main
+program after it has forked the two process and resume the main process after the consumer has finished consuming.
+This can be noticed in xsh_prodcons.c file and consume.c file.
+
+Above mentioned synchronisation cannot be achieved by using only one semaphore because this is a sequential execution program.
+If there is only one semaphore,if the producer gets first chance to execute, the consumer executes only after the producer
+completes it program execution because here there is a for loop inside which we will call for semaphore. Hence after we give up
+the semaphore for the consumer by calling signal, for loop executes next iteration and again semaphore is taken by producer itself
+So its not possible to synchronize using one semaphore.

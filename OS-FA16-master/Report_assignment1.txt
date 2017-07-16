@@ -1,0 +1,22 @@
+1.It outputs garbage i.e output is not properly printed. it is because context switching of the process is not properly
+happening.
+As there is a printf statement included in both producer and consumer and as printf requires io the output is not proper
+
+2.No. Not all the produced values are being consumed. Consumer is starting only when the producer has completed its task
+and hence not all values are properly getting consumed.
+
+Functions:
+produce()
+    produces item. it puts a fresh value into the global variable 'n' for every iteration
+
+consume()
+    consumes item. it reads the global variable 'n' value.
+
+create()
+    used to create a process in xinu. it takes 6 arguments.They are name of the function,stack size required for that
+    function,priority,alias name for the process to be shown in the process table,count of arguments given to the function
+    and arguments. create returns pid32
+
+resume()
+    used to move a process into ready queue. takes pid as input.
+    and hence not all values are properly getting consumed.
